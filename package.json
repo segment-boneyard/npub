@@ -1,0 +1,21 @@
+{
+  "name": "npub",
+  "version": "0.0.1",
+  "repository": "segmentio/npub",
+  "description": "publish a json message to nsq from the command-line",
+  "keywords": [
+    "nsqs"
+  ],
+  "dependencies": {
+    "nsq.js": "~0.10.1",
+    "commander": "~2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "license": "MIT",
+  "bin": {
+    "npub": "bin/npub"
+  }
+}

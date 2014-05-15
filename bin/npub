@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander');
+var pkg = require('../package');
+var assert = require('assert');
+var nsq = require('nsq.js');
+
+// options
+
+program
+  .usage('[options] <topic> <msg>')
+  .version(pkg.version)
+  .option('--nsqd <addr>', 'nsqd address [:4150]', ':4150')
+  .parse(process.argv);
+
+// args
+
+var topic = program.args[0];
+var msg = program.args[1];
+assert(topic, 'topic required');
+assert(msg, 'msg required');
+
+// send
+
+var pub = nsq.writer(program.nsqd);
+
+pub.on('ready', function(){
+  pub.publish(topic, msg, function(err){
+    if (err) throw err;
+    process.exit(0);
+  });
+});
