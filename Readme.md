@@ -1,7 +1,7 @@
 
 # npub
 
-  Publish json messages to NSQ.
+  Publish messages to NSQ.
 
 ## Installation
 
